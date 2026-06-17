@@ -1,0 +1,14 @@
+{
+  "name": "datavault4dbt",
+  "displayName": "datavault4dbt",
+  "description": "Agent skills for datavault4dbt: building Data Vault 2 staging, hubs, links, satellites, and business vault models in dbt across all supported adapters.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Scalefree"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/ScalefreeCOM/datavault4dbt",
+  "repository": "https://github.com/ScalefreeCOM/datavault4dbt-agent-skills",
+  "keywords": ["datavault4dbt", "data-vault", "data-vault-2.0", "dbt", "data-modeling", "data-warehouse"],
+  "skills": "./skills/"
+}

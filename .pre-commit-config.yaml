@@ -1,0 +1,17 @@
+# Configuration for pre-commit hooks (see https://pre-commit.com/).
+
+default_language_version:
+  python: python3
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: check-yaml
+    args: [--unsafe]
+  - id: check-json
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+    exclude_types:
+      - "markdown"
+  - id: check-case-conflict

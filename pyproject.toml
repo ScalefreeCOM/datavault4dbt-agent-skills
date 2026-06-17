@@ -1,0 +1,21 @@
+[project]
+name = "datavault4dbt-skills"
+version = "0.1.0"
+description = "Agent Skills for working with the datavault4dbt dbt package"
+readme = "README.md"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["evals", "evals.*", "scripts", "scripts.*"]
+
+[tool.setuptools.package-data]
+skills = ["**/*.md", "**/*.sh"]
+
+[dependency-groups]
+dev = [
+    "skills-ref @ git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref",
+]

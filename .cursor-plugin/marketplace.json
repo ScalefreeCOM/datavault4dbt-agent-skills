@@ -1,0 +1,15 @@
+{
+  "name": "datavault4dbt-agent-marketplace",
+  "description": "Skills for building Data Vault 2 warehouses with the datavault4dbt dbt package - staging, hubs, links, satellites, and business vault entities across all supported adapters.",
+  "owner": {
+    "name": "Scalefree",
+    "email": "datavault4dbt@scalefree.com"
+  },
+  "plugins": [
+    {
+      "name": "datavault4dbt",
+      "description": "Skills for generating and configuring Data Vault models with datavault4dbt - staging, hubs, links, satellites, and business vault.",
+      "source": "./skills/datavault4dbt"
+    }
+  ]
+}

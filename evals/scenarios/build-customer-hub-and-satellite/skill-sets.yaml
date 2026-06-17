@@ -1,0 +1,10 @@
+sets:
+  - name: baseline
+    skills: []
+    allowed_tools: [Read, Glob, Grep, Write, Edit]
+
+  - name: with-skill
+    skills:
+      - skills/datavault4dbt/skills/using-datavault4dbt
+    allowed_tools: [Read, Glob, Grep, Write, Edit, Skill]
+    extra_prompt: "Check if any available skill can help with this datavault4dbt task."

@@ -1,0 +1,14 @@
+{
+  "name": "ScalefreeCOM/datavault4dbt-agent-skills",
+  "version": "0.1.0",
+  "summary": "A curated collection of Agent Skills for the datavault4dbt dbt package, to help AI agents build Data Vault 2 warehouses correctly.",
+  "private": false,
+  "docs": "README.md",
+  "skills": {
+    "using-datavault4dbt": { "path": "skills/datavault4dbt/skills/using-datavault4dbt/SKILL.md" },
+    "configuring-datavault4dbt": { "path": "skills/datavault4dbt/skills/configuring-datavault4dbt/SKILL.md" },
+    "testing-a-datavault4dbt-project": { "path": "skills/datavault4dbt/skills/testing-a-datavault4dbt-project/SKILL.md" },
+    "rehashing-datavault4dbt-entities": { "path": "skills/datavault4dbt/skills/rehashing-datavault4dbt-entities/SKILL.md" },
+    "troubleshooting-datavault4dbt": { "path": "skills/datavault4dbt/skills/troubleshooting-datavault4dbt/SKILL.md" }
+  }
+}
