@@ -7,6 +7,70 @@ entities — across all adapters datavault4dbt supports.
 
 Maintained by [Scalefree](https://www.scalefree.com/).
 
+---
+
+## 🚧 Pre-release installation (internal rollout)
+
+> **Temporary.** These skills are not yet published to any public registry (skills.sh, Tessl, the
+> Cursor marketplace). Until then, install **directly from this repository** using one of the methods
+> below. Once published, use the standard [Installation](#installation) section instead — this block
+> will be removed.
+
+Because the repo may be **private** during the internal rollout, make sure your git access is set up
+first (`gh auth login`, an SSH key loaded in `ssh-agent`, or a `GITHUB_TOKEN`/`GH_TOKEN` env var for
+non-interactive/background updates). Claude Code clones the repo with your existing git credentials.
+
+### Claude Code — straight from the repo
+
+```bash
+# Add this repo as a plugin marketplace (reads .claude-plugin/marketplace.json from the repo)
+/plugin marketplace add ScalefreeCOM/datavault4dbt-agent-skills
+# Optional: pin to a branch or tag → ScalefreeCOM/datavault4dbt-agent-skills@main
+
+# Install the plugin from that marketplace
+/plugin install datavault4dbt@datavault4dbt-agent-marketplace
+
+# Verify
+/plugin marketplace list
+/plugin list
+```
+
+Update / remove later with `/plugin update datavault4dbt@datavault4dbt-agent-marketplace` and
+`/plugin uninstall datavault4dbt@datavault4dbt-agent-marketplace`.
+
+### Claude Code — from a local clone (fully offline / air-gapped)
+
+```bash
+git clone https://github.com/ScalefreeCOM/datavault4dbt-agent-skills.git
+# Point the marketplace at the local checkout
+/plugin marketplace add ./datavault4dbt-agent-skills
+/plugin install datavault4dbt@datavault4dbt-agent-marketplace
+```
+
+### Claude Code — manual fallback (no plugin system)
+
+Copy the individual skill folders into a skills directory Claude Code auto-discovers — project scope
+`.claude/skills/` (loads after you trust the workspace) or user scope `~/.claude/skills/` (loads in
+every project):
+
+```bash
+git clone https://github.com/ScalefreeCOM/datavault4dbt-agent-skills.git
+mkdir -p ~/.claude/skills
+cp -r datavault4dbt-agent-skills/skills/datavault4dbt/skills/* ~/.claude/skills/
+```
+
+Each skill keeps its `SKILL.md`; editing it takes effect immediately in the session.
+
+### Cursor / other agents — Vercel Skills CLI from the repo
+
+```bash
+# Works against the GitHub repo before public listing (private repo needs git access)
+npx skills add ScalefreeCOM/datavault4dbt-agent-skills            # all skills
+npx skills add ScalefreeCOM/datavault4dbt-agent-skills --skill using-datavault4dbt
+```
+
+---
+
 ## What are Agent Skills?
 
 Agent Skills are folders of instructions, examples, and resources that agents discover and load
@@ -20,6 +84,9 @@ your prompt matches its use case. Just describe what you need in natural languag
   pattern — with the right hash configuration, naming conventions, and materializations.
 
 ## Installation
+
+> Once the skills are published to the public registries, use the commands below. During the internal
+> rollout, follow [Pre-release installation](#-pre-release-installation-internal-rollout) above instead.
 
 ### Claude Code
 
