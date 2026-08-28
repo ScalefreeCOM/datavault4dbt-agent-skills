@@ -1,7 +1,6 @@
 # Project layout & materializations
 
-datavault4dbt projects are built in layers. A common, proven layout (mirroring the `finance-dbt-demo`
-reference project):
+datavault4dbt projects are built in layers. A common, proven layout:
 
 ```
 models/
@@ -51,7 +50,7 @@ dbt build                                 # run + test everything
 Each raw-vault entity depends on its staging model, so `dbt build --select stg_account+` builds a
 stage and everything downstream of it, running tests along the way.
 
-## Naming the models (demo convention)
+## Naming the models (common convention)
 
 - Staging: `stg__<source>__<table>` (e.g. `stg__crm__src_crm_customers`)
 - Hub: `<entity>_h` · Link: `<…>_l` · Non-historized link: `<…>_nl`

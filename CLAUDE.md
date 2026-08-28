@@ -1,7 +1,7 @@
 # datavault4dbt Agent Skills — Repository Guide
 
 This repository contains Agent Skills that help AI agents use the **datavault4dbt** dbt package
-correctly in client dbt projects. This file guides agents creating or modifying skills here.
+correctly in dbt projects. This file guides agents creating or modifying skills here.
 
 ## What a skill is
 
@@ -28,8 +28,8 @@ metadata:
 - `name` MUST be lowercase letters/digits/hyphens only and MUST match the directory name exactly.
 - Only these top-level fields are allowed: `name`, `description`, `allowed-tools`, `compatibility`,
   `license`, `metadata`, `user-invocable`.
-- NO top-level `version`, `author`, or `tags` — put author etc. under `metadata`. Version lives in
-  the plugin manifests, not in `SKILL.md`.
+- NO top-level `version`, `author`, or `tags` — put author etc. under `metadata`. Skills are not
+  individually versioned; the repo's changelog tracks changes.
 - `user-invocable: false` goes at the top level, not inside `metadata`.
 - Folder names use **gerund form** in kebab-case (`creating-...`, `staging-...`, `building-...`).
 - `description` leads with a concrete capability statement, then a "Use when…" trigger clause — make
@@ -58,20 +58,24 @@ credentials from `profiles.yml` or `.env` — scope access to target/schema name
 ## Repository layout
 
 ```
-.claude-plugin/marketplace.json   .cursor-plugin/marketplace.json   # distribution manifests (keep in sync)
 .claude/skills/auditing-skills/   # internal skill (metadata: internal: true), not published
-.changes/ + .changie.yaml         # Changie changelog
-.github/                          # issue/PR templates, validate.yml workflow
+release-please-config.json + .release-please-manifest.json   # changelog/versioning
+.github/                          # issue/PR templates, validate.yml + release-please.yml workflows
 scripts/validate_skills.py        # frontmatter validator (run before committing)
-skills/datavault4dbt/             # the plugin group
-  .claude-plugin/plugin.json  .cursor-plugin/plugin.json   # versioned manifests (keep in sync)
-  skills/<gerund-name>/SKILL.md (+ references/, scripts/)
+skills/datavault4dbt/skills/<gerund-name>/SKILL.md (+ references/, scripts/)
 ```
+
+There are **no plugin or marketplace manifests**. The repo is distributed as plain skill folders:
+users clone it and symlink `skills/datavault4dbt/skills/*` into `~/.claude/skills/` or a project's
+`.claude/skills/`. Don't add `.claude-plugin/`, `.cursor-plugin/`, or registry manifests
+(`tile.json`, skills.sh/Tessl config) without an explicit decision to publish.
 
 ## Before committing
 
 1. `python scripts/validate_skills.py` — frontmatter/name/dir checks must pass.
 2. Confirm gerund kebab-case folder name; `name` matches the directory.
-3. `changie new` for user-facing changes (entry lands in `.changes/unreleased/`).
-4. Keep the two `marketplace.json` files and the two `plugin.json` files in sync.
-5. Update the skill table in `README.md` (planned → shipped) when adding a skill.
+3. Write the commit as a [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) —
+   release-please builds `CHANGELOG.md` and the version bump from it. Types and sections are in
+   `release-please-config.json`; see CONTRIBUTING.md for the table. Never hand-edit `CHANGELOG.md` or
+   the `version` in `pyproject.toml`.
+4. Update the skill table in `README.md` (planned → shipped) when adding a skill.

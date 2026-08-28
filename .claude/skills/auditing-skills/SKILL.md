@@ -1,27 +1,19 @@
 ---
 name: auditing-skills
-description: Use when checking this repository's skills for security or quality issues, reviewing audit results from skills.sh or Tessl, or remediating findings across published skills.
+description: Use when checking this repository's skills for security or quality issues before sharing them, or remediating findings across skills.
 metadata:
   internal: true
 ---
 
 # Auditing Skills
 
-Audit published datavault4dbt skills against third-party security scanners and quality reviewers, and
-remediate findings. This skill is internal to the repository and is not published.
+Self-audit the datavault4dbt skills for the issues third-party scanners and quality reviewers flag, and
+remediate them. This skill is internal to the repository and is not part of the distributed skill set.
 
-## Security audit sources
-
-### skills.sh
-
-[skills.sh](https://skills.sh) runs independent security audits on every published skill (e.g. Gen
-Agent Trust Hub, Socket, Snyk), each assigning **Pass**, **Warn**, or **Fail**.
-
-Check individual skill pages — the listing page may not surface per-skill audit statuses:
-
-1. Listing — `https://skills.sh/{org}/{repo}`
-2. Per-skill — `https://skills.sh/{org}/{repo}/{skill-name}`
-3. Detailed findings — `https://skills.sh/{org}/{repo}/{skill-name}/security/{auditor}`
+> The repo is currently distributed by direct clone only — it is not listed on any registry
+> (skills.sh, Tessl, Cursor marketplace), so there are no external audit results to fetch. Audit
+> against the categories below by reading the skill files directly. If the repo is published later,
+> add the registry-fetch steps back.
 
 ## Common finding categories and remediations
 
@@ -68,10 +60,10 @@ third-party tools.
 - Never read secrets from profiles.yml or .env; scope access to target/schema names only
 ```
 
-## Quality audit (Tessl)
+## Quality audit
 
-[Tessl](https://tessl.io) scores **Activation** (will the agent find/load the skill?) and
-**Implementation** (will the agent follow it?). Common findings and fixes:
+Score each skill on **Activation** (will the agent find and load it?) and **Implementation** (will the
+agent follow it?). Common findings and fixes:
 
 - **Low specificity** — add a concrete capability statement before the "Use when…" clause.
 - **Weak trigger terms** — include natural-language terms users say ("Data Vault", "hub", "satellite",
@@ -80,8 +72,10 @@ third-party tools.
 
 ## Audit workflow
 
-1. Fetch audit results for every skill on its individual page.
-2. For any non-Pass result, fetch the detailed finding.
+1. Read every `SKILL.md` and `references/*.md` under `skills/`, checking each against the categories
+   above.
+2. Also check for content that should not leave Scalefree: client or project names, private repo names,
+   hostnames, account IDs, schemas tied to a client, and anything resembling a credential.
 3. Group findings by root cause — many skills share the same issue.
 4. Remediate by root cause, not by skill, for consistency.
 5. Run repo validation after changes: `python scripts/validate_skills.py`.

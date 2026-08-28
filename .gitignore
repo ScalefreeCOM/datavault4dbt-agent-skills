@@ -42,4 +42,9 @@ Thumbs.db
 # Evals output
 evals/runs/
 evals/reports/
+
+# Secrets
 .env
+
+# Claude Code local settings (machine-specific permission allowlists)
+.claude/settings.local.json

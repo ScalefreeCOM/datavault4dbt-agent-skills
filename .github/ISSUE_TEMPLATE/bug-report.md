@@ -33,3 +33,8 @@ labels: bug
 ## Any additional context?
 
 <!-- Adapter (Snowflake/BigQuery/...), datavault4dbt version, logs, screenshots -->
+
+<!--
+  Please redact anything client-identifying before pasting: table/schema/account names,
+  hostnames, connection details, and real data values. A minimal anonymized repro is enough.
+-->

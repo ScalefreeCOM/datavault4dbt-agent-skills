@@ -16,4 +16,5 @@ resolves #
 - [ ] I have read [the contributing guide](../CONTRIBUTING.md) and understand what's expected of me
 - [ ] Skill `name` matches its directory and frontmatter contains only allowed fields
 - [ ] I have verified any datavault4dbt macro behavior against the package docs/macros (not memory)
-- [ ] I have run `changie new` to create a changelog entry
+- [ ] This PR's **title** follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+      (it becomes the squashed commit message and the changelog entry)

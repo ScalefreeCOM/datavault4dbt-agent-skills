@@ -19,9 +19,9 @@ staging, hub, link, satellite, and business-vault models correctly.
 ## Setup
 
 ```bash
-uv sync                              # install dev dependencies (or: pip install -e ".[dev]")
-pre-commit install                   # optional: run hooks on commit
-python scripts/validate_skills.py    # validate all SKILL.md frontmatter
+uv sync                              # install dev dependencies (pre-commit)
+uv run pre-commit install            # optional: run hooks on commit
+python scripts/validate_skills.py    # validate all SKILL.md frontmatter (no dependencies)
 ```
 
 ## Creating a new skill
@@ -71,14 +71,44 @@ scripts in `scripts/`. Link them inline from `SKILL.md`.
 ## Testing your skill
 
 - Run `python scripts/validate_skills.py`.
-- Pressure-test against a real datavault4dbt project (e.g. a copy of `finance-dbt-demo`): have an agent
-  use the skill, then confirm the generated models compile and build (`dbt deps && dbt build`).
+- Pressure-test against a real datavault4dbt project (a scratch copy of any dbt project with the
+  package installed): have an agent use the skill, then confirm the generated models compile and build
+  (`dbt deps && dbt build`). Never point tests at a client project or client data.
 - See [`evals/`](evals/) for the A/B harness comparing skill variations.
+
+## Commit messages
+
+This repository uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+[release-please](https://github.com/googleapis/release-please) reads them to generate `CHANGELOG.md`,
+bump the version, and open a release PR — so the commit subject is the changelog entry. Write it for a
+reader of the changelog, not for yourself.
+
+```
+feat(using-datavault4dbt): document non-historized link loading
+fix(staging): correct the hashed_columns key for multi-active satellites
+docs: explain the local install path in the README
+```
+
+| Type | Changelog section | Version bump |
+|------|-------------------|--------------|
+| `feat` | Features | minor |
+| `fix` | Fixes | patch |
+| `docs` | Docs | patch |
+| `refactor`, `perf` | Under the Hood | patch |
+| `build` | Dependencies | patch |
+| `chore`, `ci`, `test` | hidden | none |
+
+A `!` after the type (`feat!:`) or a `BREAKING CHANGE:` footer triggers a major bump — for skills, that
+means a rename or removal that breaks existing installs. Security fixes go under `fix` with the impact
+spelled out in the body. The scope is optional; use the skill name when a change is skill-specific.
+
+Because PRs are squash-merged, the **PR title** becomes the commit message — it must follow the same
+format.
 
 ## Submitting a pull request
 
-1. Run `changie new` to add a changelog entry.
-2. Ensure validation passes and the README skill table is updated.
+1. Ensure validation passes and the README skill table is updated.
+2. Give the PR a Conventional Commits title (see above).
 3. Open a PR using the template and link any related issue.
 
 ## Skill ideas

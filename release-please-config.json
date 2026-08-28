@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "package-name": "datavault4dbt-agent-skills",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "include-component-in-tag": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Fixes" },
+        { "type": "docs", "section": "Docs" },
+        { "type": "refactor", "section": "Under the Hood" },
+        { "type": "perf", "section": "Under the Hood" },
+        { "type": "build", "section": "Dependencies" },
+        { "type": "chore", "section": "Under the Hood", "hidden": true },
+        { "type": "ci", "section": "Under the Hood", "hidden": true },
+        { "type": "test", "section": "Under the Hood", "hidden": true }
+      ]
+    }
+  }
+}

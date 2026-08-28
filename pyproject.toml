@@ -17,5 +17,5 @@ skills = ["**/*.md", "**/*.sh"]
 
 [dependency-groups]
 dev = [
-    "skills-ref @ git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref",
+    "pre-commit>=4.0",
 ]
