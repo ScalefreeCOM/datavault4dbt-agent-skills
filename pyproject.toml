@@ -1,6 +1,6 @@
 [project]
 name = "datavault4dbt-skills"
-version = "0.1.0"
+version = "0.2.0"
 description = "Agent Skills for working with the datavault4dbt dbt package"
 readme = "README.md"
 requires-python = ">=3.11"
