@@ -1,0 +1,8 @@
+{
+  "name": "datavault4dbt-agent-skills",
+  "description": "Official Agent Skills for the datavault4dbt dbt package, maintained by Scalefree. Covers building, configuring, testing, troubleshooting, and rehashing Data Vault 2 warehouses.",
+  "owner": { "name": "Scalefree" },
+  "plugins": [
+    { "name": "datavault4dbt", "source": "./" }
+  ]
+}
