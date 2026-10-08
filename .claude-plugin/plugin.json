@@ -3,7 +3,7 @@
   "displayName": "datavault4dbt Agent Skills",
   "description": "Skills for building Data Vault 2 warehouses with the datavault4dbt dbt package — staging, hubs, links, satellites, and business-vault entities. Covers configuring the package, testing a raw vault, rehashing after hash-config changes, and troubleshooting common failures.",
   "author": {
-    "name": "Scalefree",
+    "name": "Scalefree International GmbH",
     "url": "https://www.scalefree.com"
   },
   "homepage": "https://github.com/ScalefreeCOM/datavault4dbt-agent-skills",
