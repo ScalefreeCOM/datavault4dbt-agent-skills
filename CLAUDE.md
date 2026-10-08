@@ -58,17 +58,21 @@ credentials from `profiles.yml` or `.env` — scope access to target/schema name
 ## Repository layout
 
 ```
-.claude/skills/auditing-skills/   # internal skill (metadata: internal: true), not published
+.claude-plugin/plugin.json          # Claude Code plugin manifest (name, description, author, skills path)
+.claude-plugin/marketplace.json     # Claude Code marketplace entry (enables `claude plugin marketplace add`)
+.claude/skills/auditing-skills/     # internal skill (metadata: internal: true), not published
 release-please-config.json + .release-please-manifest.json   # changelog/versioning
-.github/                          # issue/PR templates, validate.yml + release-please.yml workflows
-scripts/validate_skills.py        # frontmatter validator (run before committing)
+.github/                            # issue/PR templates, validate.yml + release-please.yml workflows
+scripts/validate_skills.py          # frontmatter validator (run before committing)
 skills/datavault4dbt/skills/<gerund-name>/SKILL.md (+ references/, scripts/)
 ```
 
-There are **no plugin or marketplace manifests**. The repo is distributed as plain skill folders:
-users clone it and symlink `skills/datavault4dbt/skills/*` into `~/.claude/skills/` or a project's
-`.claude/skills/`. Don't add `.claude-plugin/`, `.cursor-plugin/`, or registry manifests
-(`tile.json`, skills.sh/Tessl config) without an explicit decision to publish.
+The repo root is the plugin root. `plugin.json` points `skills` at `./skills/datavault4dbt/skills/`
+so Claude Code discovers all five skills under the plugin namespace `datavault4dbt:*`.
+
+> **`claude plugin validate` known warning**: the tool warns when it finds a `CLAUDE.md` at the
+> plugin root (this file). That warning is accepted — this file is essential for contributors working
+> on the repo with Claude Code. Don't delete it. Do not use `--strict` in CI for this reason.
 
 ## Before committing
 

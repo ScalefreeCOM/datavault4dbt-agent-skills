@@ -23,69 +23,53 @@ your prompt matches its use case. Just describe what you need in natural languag
 
 ## Installation
 
-These skills are distributed as plain skill folders from this repository — there is no plugin
-marketplace or registry listing. Install them by cloning the repo and pointing your agent's skills
-directory at `skills/datavault4dbt/skills/`.
+### Claude Code (plugin install — recommended)
 
-### 1. Clone the repository
+```bash
+# Add the marketplace once
+claude plugin marketplace add ScalefreeCOM/datavault4dbt-agent-skills
+
+# Install the plugin
+claude plugin install datavault4dbt@datavault4dbt-agent-skills
+```
+
+The plugin loads into every Claude Code session automatically. To update:
+
+```bash
+claude plugin update datavault4dbt@datavault4dbt-agent-skills
+```
+
+### Claude Code (manual install — for offline or frozen snapshots)
+
+Clone the repository and symlink the plugin directory into your skills folder:
 
 ```bash
 git clone https://github.com/ScalefreeCOM/datavault4dbt-agent-skills.git
 cd datavault4dbt-agent-skills
-```
 
-### 2. Link (or copy) the skills into a skills directory
-
-Claude Code auto-discovers skills in two places:
-
-- **User scope** — `~/.claude/skills/`, available in every project.
-- **Project scope** — `<your-dbt-project>/.claude/skills/`, loaded once you trust the workspace.
-
-Symlinking keeps the skills up to date with `git pull`:
-
-```bash
-# User scope (available everywhere)
+# User scope (available in every project)
 mkdir -p ~/.claude/skills
-ln -s "$PWD"/skills/datavault4dbt/skills/* ~/.claude/skills/
+ln -s "$PWD" ~/.claude/skills/datavault4dbt
 ```
+
+Or load it for a single session:
 
 ```bash
-# Project scope (only in one dbt project)
-mkdir -p /path/to/your-dbt-project/.claude/skills
-ln -s "$PWD"/skills/datavault4dbt/skills/* /path/to/your-dbt-project/.claude/skills/
+claude --plugin-dir /path/to/datavault4dbt-agent-skills
 ```
 
-Prefer a copy if you want a frozen snapshot instead of a live link:
+`git pull` inside the clone keeps symlinked installs up to date.
 
-```bash
-cp -r skills/datavault4dbt/skills/* ~/.claude/skills/
-```
-
-Install a single skill by naming it instead of globbing:
-
-```bash
-ln -s "$PWD"/skills/datavault4dbt/skills/using-datavault4dbt ~/.claude/skills/
-```
-
-### 3. Verify
+### Verify
 
 Start a session in a dbt project and ask something like *"add a customer hub with datavault4dbt"* — the
-agent should load `using-datavault4dbt` on its own. Editing a `SKILL.md` takes effect immediately in the
-next session.
+agent should load `using-datavault4dbt` on its own.
 
 ### Other agents (Cursor, Cline, Copilot, …)
 
 Any agent that supports the [Agent Skills](https://agentskills.io/home) format works the same way: point
 its skills directory at the folders under `skills/datavault4dbt/skills/`. Check your client's docs for
 where that directory lives.
-
-### Updating
-
-```bash
-git pull                 # symlinked installs pick this up automatically
-```
-
-If you copied instead of symlinking, re-run the `cp` after pulling.
 
 ## Available skills
 
