@@ -1,7 +1,7 @@
 ---
 name: configuring-datavault4dbt
 description: Installs and configures the datavault4dbt package in a dbt project — packages.yml, copying the global vars into dbt_project.yml, hash and naming settings, and per-adapter setup. Use when setting up datavault4dbt, installing the package, changing hash/naming global variables, or adapting configuration for a specific warehouse (Snowflake, BigQuery, Redshift, etc.).
-allowed-tools: "Bash(dbt *), Read, Write, Edit, Glob, Grep"
+allowed-tools: "Bash(dbt *), Read(**/*.sql, **/*.yml, **/*.yaml, target/**), Write(**/*.sql, **/*.yml, **/*.yaml), Edit, Glob, Grep"
 user-invocable: false
 metadata:
   author: scalefree

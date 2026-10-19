@@ -1,7 +1,7 @@
 ---
 name: troubleshooting-datavault4dbt
 description: Diagnoses common datavault4dbt failures — satellites capturing too many or too few rows, multi-source high-water-mark issues, ghost-record/datatype errors, and YAML-metadata compile errors. Use when a datavault4dbt model errors on compile or run, a satellite detects the wrong number of changes, or a hub/link/satellite loads nothing or duplicates.
-allowed-tools: "Bash(dbt *), Read, Write, Edit, Glob, Grep"
+allowed-tools: "Bash(dbt *), Read(**/*.sql, **/*.yml, **/*.yaml, target/**), Write(**/*.sql, **/*.yml, **/*.yaml), Edit, Glob, Grep"
 user-invocable: false
 metadata:
   author: scalefree

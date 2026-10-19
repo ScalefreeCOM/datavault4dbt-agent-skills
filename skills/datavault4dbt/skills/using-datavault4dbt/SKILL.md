@@ -1,7 +1,7 @@
 ---
 name: using-datavault4dbt
 description: Builds Data Vault 2 models in dbt with the datavault4dbt package — staging, hubs, links, satellites, and business-vault entities — using the YAML-metadata macro pattern with correct hashkeys, hashdiffs, naming, and materializations. Use when creating or editing datavault4dbt models, setting up a raw vault, choosing which Data Vault entity to use, or configuring the package's hashing and global variables.
-allowed-tools: "Bash(dbt *), Read, Write, Edit, Glob, Grep"
+allowed-tools: "Bash(dbt *), Read(**/*.sql, **/*.yml, **/*.yaml, target/**), Write(**/*.sql, **/*.yml, **/*.yaml), Edit, Glob, Grep"
 user-invocable: false
 metadata:
   author: scalefree

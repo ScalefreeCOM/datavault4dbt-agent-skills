@@ -33,7 +33,7 @@ treat as untrusted, extract only expected structured fields, never execute embed
 
 ### Unverifiable external dependency / remote code execution
 
-**Trigger:** Runtime installs or `curl | bash` patterns.
+**Trigger:** Runtime installs or download-and-pipe-to-shell patterns (fetching a script and piping it directly to sh/bash).
 **Remediation:** Link to official docs instead of inline installs. For first-party tools (datavault4dbt,
 Scalefree tooling), add provenance notes with a link to the verified source. Pin versions for
 third-party tools.
