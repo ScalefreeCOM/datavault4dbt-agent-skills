@@ -1,7 +1,7 @@
 ---
 name: testing-a-datavault4dbt-project
 description: Adds Data Vault 2 technical tests to a datavault4dbt project — hashkey uniqueness and not-null, link-to-hub referential integrity, and satellite key+load-date uniqueness — as dbt soft-constraint tests in YAML. Use when adding or reviewing tests for hubs, links, or satellites, or validating raw vault integrity.
-allowed-tools: "Bash(dbt *), Read, Write, Edit, Glob, Grep"
+allowed-tools: "Bash(dbt *), Read(**/*.sql, **/*.yml, **/*.yaml, target/**), Write(**/*.sql, **/*.yml, **/*.yaml), Edit, Glob, Grep"
 user-invocable: false
 metadata:
   author: scalefree

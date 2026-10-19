@@ -1,7 +1,7 @@
 ---
 name: rehashing-datavault4dbt-entities
 description: Recalculates hashkeys and hashdiffs across an existing raw vault with datavault4dbt's rehashing macros after a change to the hash algorithm, datatype, trimming, or case sensitivity — including the v1→v2.0.0 upgrade. Use when changing hash global variables, migrating hash logic, or upgrading datavault4dbt without dropping history.
-allowed-tools: "Bash(dbt *), Read, Write, Edit, Glob, Grep"
+allowed-tools: "Bash(dbt *), Read(**/*.sql, **/*.yml, **/*.yaml, target/**), Write(**/*.sql, **/*.yml, **/*.yaml), Edit, Glob, Grep"
 user-invocable: false
 metadata:
   author: scalefree
