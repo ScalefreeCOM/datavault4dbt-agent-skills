@@ -7,10 +7,11 @@
     "name": "Scalefree International GmbH",
     "url": "https://www.scalefree.com"
   },
-  "homepage": "https://github.com/ScalefreeCOM/datavault4dbt-agent-skills",
+  "homepage": "https://www.datavault4dbt.com/",
   "repository": "https://github.com/ScalefreeCOM/datavault4dbt-agent-skills",
   "license": "Apache-2.0",
   "keywords": ["datavault4dbt", "dbt", "data-vault", "data-engineering", "data-vault-2"],
   "icon": "./img/Scalefree_Satellite.png",
-  "skills": ["./skills/datavault4dbt/skills/"]
+  "skills": ["./skills/datavault4dbt/skills/"],
+  "documentationUrl": "https://www.datavault4dbt.com/documentation"
 }
